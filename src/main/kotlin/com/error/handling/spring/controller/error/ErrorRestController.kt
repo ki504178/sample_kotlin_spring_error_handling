@@ -28,7 +28,7 @@ class ErrorRestController(
     private val messageSource: MessageSource
 ) : AbstractErrorController(errorAttributes) {
     companion object {
-        private const val VALIDATION_ERROR = "InvalidError"
+        private const val INVALID_ERROR = "InvalidError"
     }
 
     // バリデーションエラーハンドラ
@@ -53,21 +53,21 @@ class ErrorRestController(
         val body = when (error) {
             is BindException -> {
                 ErrorResponse(
-                    errorCause = VALIDATION_ERROR,
+                    errorCause = INVALID_ERROR,
                     invalidErrors = formErrorHandler.handleFormException(error, messageSource)
                 )
             }
 
             is ConstraintViolationException -> {
                 ErrorResponse(
-                    errorCause = VALIDATION_ERROR,
+                    errorCause = INVALID_ERROR,
                     invalidErrors = mutableListOf(parameterErrorHandler.handleParameterException(error))
                 )
             }
 
             is MissingServletRequestParameterException -> {
                 ErrorResponse(
-                    errorCause = VALIDATION_ERROR,
+                    errorCause = INVALID_ERROR,
                     invalidErrors = mutableListOf(parameterErrorHandler.handleParameterException(error))
                 )
             }

@@ -37,7 +37,7 @@ internal class FormErrorHandlerTest(
     val restTemplate: TestRestTemplate
 ) : FunSpec() {
     companion object {
-        private const val VALIDATION_ERROR = "InvalidError"
+        private const val INVALID_ERROR = "InvalidError"
         private const val ROOT_URI = "/test/form_error_test"
     }
 
@@ -166,7 +166,7 @@ internal class FormErrorHandlerTest(
         val body = mapper.readValue(ret.body, ErrorResponse::class.java)
         println(body)
         Assertions.assertNotNull(body.responseId)
-        Assertions.assertEquals(VALIDATION_ERROR, body.errorCause)
+        Assertions.assertEquals(INVALID_ERROR, body.errorCause)
         Assertions.assertNull(body.message)
 
         return body
