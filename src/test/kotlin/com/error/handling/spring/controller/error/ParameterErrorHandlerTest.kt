@@ -27,7 +27,7 @@ internal class ParameterErrorHandlerTest(
     val restTemplate: TestRestTemplate
 ) : FunSpec() {
     companion object {
-        private const val VALIDATION_ERROR = "ValidationError"
+        private const val VALIDATION_ERROR = "InvalidError"
         private const val ROOT_URI = "/test/param_error_test"
     }
 

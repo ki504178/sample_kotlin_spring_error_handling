@@ -28,7 +28,7 @@ class ErrorRestController(
     private val messageSource: MessageSource
 ) : AbstractErrorController(errorAttributes) {
     companion object {
-        private const val VALIDATION_ERROR = "ValidationError"
+        private const val VALIDATION_ERROR = "InvalidError"
     }
 
     // バリデーションエラーハンドラ

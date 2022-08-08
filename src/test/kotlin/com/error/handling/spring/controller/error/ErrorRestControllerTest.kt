@@ -53,7 +53,7 @@ internal class ErrorRestControllerTest(
             val body = mapper.readValue(ret.body, ErrorResponse::class.java)
 
             body.responseId shouldNotBe null
-            body.errorCause shouldBe "ValidationError"
+            body.errorCause shouldBe "InvalidError"
             body.invalidErrors shouldNotBe null
             body.invalidErrors?.size shouldBe 1
 
